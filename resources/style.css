@@ -1,0 +1,210 @@
+/* Basics */
+
+body {
+    background-color: #343a40;
+    color: #f8f9fa;
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 120px;
+}
+
+p {
+    font-size: 1.15rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0;
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+hr {
+    border-top: 0.5px solid #f8f9fa;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #343a40;
+}
+
+.modal-header, .modal-footer {
+    border: 0;
+}
+
+/* Status bar */
+.status {
+    background-color: #232628;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1030;
+}
+
+.status-content {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Ents Logo */
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 0.025em;
+    line-height: 2rem;
+    padding: 0.4rem 1rem 0.4rem 0.4rem;
+    border: 2px solid;
+    display: inline-block;
+}
+
+.logo-ents {
+    padding-top: 1.75rem;
+    font-weight: 800;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-top: 5px;
+}
+
+.title h1, .title p {
+    margin: 0;
+}
+
+.live {
+    background-color: #dc3545;
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+}
+
+/* Basic buttons and radio */
+button, .radio-button {
+    border-radius: 0;
+    background-color: #c1c1c1;
+    border: 0;
+    color: buttontext;
+    text-align: center;
+}
+
+button:hover, .radio-button:hover {
+    background-color: #b2b2b2;
+}
+
+button:active, .radio-button:active {
+    background-color: #6d6d6d;
+}
+
+button.active, .radio-button.active {
+    background-color: #fff;
+}
+
+.radio-button input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+/* Fixture selector */
+
+.fixtures-carousel {
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.fixtures-carousel label {
+    scroll-snap-align: start;
+    padding: 50px 75px;
+    margin: 0 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.fixtures-carousel::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.fixtures-carousel::-webkit-scrollbar-thumb {
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.fixtures-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Colour selector */
+.colours label {
+    height: 75px;
+    width: 75px;
+    border-radius: 100px;
+    border: 0;
+
+    color: rgba(0, 0, 0, 0);
+}
+
+.colours label:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .4);
+    transform: scale(1.05);
+    transition: box-shadow .2s, transform .2s;
+    color: rgba(0, 0, 0, 0);
+}
+
+.colours label.active {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .8);
+    transform: scale(1.05);
+    border: 3px solid #fff;
+    color: rgba(0, 0, 0, 0);
+    transition: box-shadow .2s, transform .2s, border .2s;
+}
+
+.colour-red, .colour-red:hover, .colour-red.active {
+    background-color: red !important;
+}
+
+.colour-orange, .colour-orange:hover, .colour-orange.active {
+    background-color: orange !important;
+}
+
+.colour-yellow, .colour-yellow:hover, .colour-yellow.active {
+    background-color: yellow !important;
+}
+
+.colour-light-green, .colour-light-green:hover, .colour-light-green.active {
+    background-color: lime !important;
+}
+
+.colour-dark-green, .colour-dark-green:hover, .colour-dark-green.active {
+    background-color: green !important;
+}
+
+.colour-light-blue, .colour-light-blue:hover, .colour-light-blue.active {
+    background-color: cyan !important;
+}
+
+.colour-dark-blue, .colour-dark-blue:hover, .colour-dark-blue.active {
+    background-color: blue !important;
+}
+
+.colour-purple, .colour-purple:hover, .colour-purple.active {
+    background-color: purple !important;
+}
+
+/* Stacked buttons for effects and positions */
+.stacked-buttons button, .stacked-buttons label {
+    width: 100%;
+    padding: 5px;
+    font-size: 1.15rem;
+    margin-bottom: 8px !important;
+}

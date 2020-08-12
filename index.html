@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crowd Control - Ents Crew</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&amp;family=Montserrat&amp;display=swap'
+        rel='stylesheet'>
+  <link href="resources/style.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- Intro modal -->
+<div aria-hidden="true" class="modal fade" data-backdrop="static" data-keyboard="false" id="intro-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="logo mr-3">
+          <div class="logo-ents">Ents</div>
+          <div class="logo-crew">Crew</div>
+        </div>
+        <h3 class="modal-title" id="staticBackdropLabel">Welcome to Crowd Control.</h3>
+      </div>
+      <div class="modal-body">
+        <p>Crowd Control lets you take control of a 3D rendering of St Andrews' only nightclub, Club 601. We're live on
+          Facebook and Teams right now, where your designs will be broadcast to the world.</p>
+        <p>Join the queue and have a play with the controls in Rehearsal Mode while you're waiting, to get a feel for
+          how it works. Once it's your turn, you'll be switched into Live Mode and your controls will activate, so you
+          can start making your designs. The bar at the bottom of the screen will let you know what mode you're in.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" type="button">Join the queue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="status">
+  <div class="container status-content">
+    <strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can
+    practise.<br>
+    <!--<strong class="live">Live mode</strong> - your controls are currently affecting what you see on the live stream!-->
+  </div>
+</div>
+
+<div class="container">
+  <header>
+    <div class="logo mr-3">
+      <div class="logo-ents">Ents</div>
+      <div class="logo-crew">Crew</div>
+    </div>
+    <div class="title">
+      <h1>Crowd Control</h1>
+      <p>Be the lighting designer in our 3D rendering of Club 601.</p>
+    </div>
+  </header>
+  <p>Choose a group of lights, then pick their colour, position, and effects. Watch the live stream to see your design
+    come to life.
+  <p>
+  <hr>
+</div>
+
+<div class="container-fluid mt-4 live-views">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen class="embed-responsive-item"
+                frameborder="0" src="https://www.youtube-nocookie.com/embed/vPGUZvtQfA0"></iframe>
+      </div>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="fixtures-title">Light groups</h2>
+  <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons">
+    <label class="btn radio-button active">
+      <input checked id="group-house-flood" name="groups" type="radio">
+      House flood</label>
+    <label class="btn radio-button">
+      <input id="group-house-rear" name="groups" type="radio">
+      House rear</label>
+    <label class="btn radio-button">
+      <input id="group-house-front" name="groups" type="radio">
+      House front</label>
+    <label class="btn radio-button">
+      <input id="group-crowd-scanner" name="groups" type="radio">
+      Crowd scanner</label>
+    <label class="btn radio-button">
+      <input id="group-stage-front" name="groups" type="radio">
+      Stage front</label>
+    <label class="btn radio-button">
+      <input id="group-stage-back" name="groups" type="radio">
+      Stage back</label>
+    <label class="btn radio-button">
+      <input id="group-back-curtain" name="groups" type="radio">
+      Back curtain</label>
+    <label class="btn radio-button">
+      <input id="group-dj-lights" name="groups" type="radio">
+      DJ lights</label>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 colours btn-group-toggle" data-toggle="buttons">
+      <h3>Colour</h3>
+      <label class="btn radio-button colour-red">
+        <input id="colour-red" name="colours" type="radio">
+        Red</label>
+      <label class="btn radio-button colour-orange active">
+        <input checked id="colour-orange" name="colours" type="radio">
+        Orange</label>
+      <label class="btn radio-button colour-yellow">
+        <input id="colour-yellow" name="colours" type="radio">
+        Yellow</label>
+      <label class="btn radio-button colour-light-green">
+        <input id="colour-light-green" name="colours" type="radio">
+        Light green</label>
+      <label class="btn radio-button colour-dark-green">
+        <input id="colour-dark-green" name="colours" type="radio">
+        Dark green</label>
+      <label class="btn radio-button colour-light-blue">
+        <input id="colour-light-blue" name="colours" type="radio">
+        Light blue</label>
+      <label class="btn radio-button colour-dark-blue">
+        <input id="colour-dark-blue" name="colours" type="radio">
+        Dark blue</label>
+      <label class="btn radio-button colour-purple">
+        <input id="colour-purple" name="colours" type="radio">
+        Purple</label>
+    </div>
+    <div class="col-md-3">
+      <h3>Position</h3>
+      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons">
+        <label class="btn radio-button active">
+          <input checked id="position-up" name="positions" type="radio">
+          Up</label>
+        <label class="btn radio-button">
+          <input id="position-down" name="positions" type="radio">
+          Down</label>
+        <label class="btn radio-button">
+          <input id="position-cross" name="positions" type="radio">
+          Cross</label>
+        <label class="btn radio-button">
+          <input id="position-forwards" name="positions" type="radio">
+          Forward</label>
+        <label class="btn radio-button">
+          <input id="position-back" name="positions" type="radio">
+          Back</label>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h3>Effect</h3>
+      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons">
+        <label class="btn radio-button active">
+          <input checked id="effect-none" name="effects" type="radio">
+          None</label>
+        <label class="btn radio-button">
+          <input id="effect-strobe-slow" name="effects" type="radio">
+          Strobe Slow</label>
+        <label class="btn radio-button active">
+          <input id="effect-strobe-fast" name="effects" type="radio">
+          Strobe Fast</label>
+        <label class="btn radio-button">
+          <input id="effect-scan" name="effects" type="radio">
+          Scan</label>
+        <label class="btn radio-button">
+          <input id="effect-spin" name="effects" type="radio">
+          Spin</label>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+<script src="resources/script.js"></script>
+
+</body>
+</html>
