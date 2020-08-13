@@ -169,38 +169,6 @@ button.active, .radio-button.active {
     transition: box-shadow .2s, transform .2s, border .2s;
 }
 
-.colour-red, .colour-red:hover, .colour-red.active {
-    background-color: red !important;
-}
-
-.colour-orange, .colour-orange:hover, .colour-orange.active {
-    background-color: orange !important;
-}
-
-.colour-yellow, .colour-yellow:hover, .colour-yellow.active {
-    background-color: yellow !important;
-}
-
-.colour-light-green, .colour-light-green:hover, .colour-light-green.active {
-    background-color: lime !important;
-}
-
-.colour-dark-green, .colour-dark-green:hover, .colour-dark-green.active {
-    background-color: green !important;
-}
-
-.colour-light-blue, .colour-light-blue:hover, .colour-light-blue.active {
-    background-color: cyan !important;
-}
-
-.colour-dark-blue, .colour-dark-blue:hover, .colour-dark-blue.active {
-    background-color: blue !important;
-}
-
-.colour-purple, .colour-purple:hover, .colour-purple.active {
-    background-color: purple !important;
-}
-
 /* Stacked buttons for effects and positions */
 .stacked-buttons button, .stacked-buttons label {
     width: 100%;

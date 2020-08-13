@@ -14,13 +14,13 @@ function addColourButtons() {
     var colours = Object.keys(fixtures[activeFixture].colour);
 
     // Iterate through all the colours
-    colours.forEach(function (item, index) {
+    colours.forEach(function (item) {
         // Empty variables to store the "active" status class and the input checked status
         var activeClass = "";
         var inputChecked = "";
 
         // if the item is selected, update the active class and checked input state
-        if (fixtures[activeFixture].active.colours === item) {
+        if (fixtures[activeFixture].active.colour === item) {
             activeClass = "active";
             inputChecked = "checked";
         }
@@ -28,7 +28,7 @@ function addColourButtons() {
         // Append to the button list
         $("#colour").append(
             '<label class="btn radio-button ' + activeClass + '" style="background-color: #' + fixtures[activeFixture].colour[item][2] + '">\n' +
-            '          <input name="colours" type="radio" class="control-button" data-controls="colours" data-interactiveid="' + item + '" ' + inputChecked + '>\n' +
+            '          <input name="colour" type="radio" class="control-button" data-controls="colour" data-interactiveid="' + item + '" ' + inputChecked + '>\n' +
             '          Red</label>'
         )
     });
@@ -42,7 +42,7 @@ function addButtons(type) {
     var attributes = Object.keys(fixtures[activeFixture][type]);
 
     // Iterate through all the attributes
-    attributes.forEach(function (item, index) {
+    attributes.forEach(function (item) {
         // Empty variables to store the "active" status class and the input checked status
         var activeClass = "";
         var inputChecked = "";
@@ -68,7 +68,7 @@ $(document).ready(function () {
     // $('#intro-modal').modal();
 
     // Generate the buttons for all the fixtures
-    fixtureKeys.forEach(function (item, index) {
+    fixtureKeys.forEach(function (item) {
         // Append to the carousel
         $("#fixtures-carousel").append(
             '<label class="btn radio-button">\n' +
@@ -100,7 +100,7 @@ $(document).ready(function () {
                 {
                     fixture: getActiveFixture(),
                     attribute: $(this).data("controls"),
-                    action: $(this).data("interactiveid")
+                    action: fixtures[getActiveFixture()][$(this).data("controls")][$(this).data("interactiveid")][1]
                 })
         });
     });
