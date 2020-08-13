@@ -2,3 +2,4 @@ vendor
 config.php
 queue.db
 .idea
+resources/fixtures.js

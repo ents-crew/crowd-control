@@ -1,0 +1,58 @@
+// Provide information about all fixtures
+var fixtures = {
+    // Fixture ID
+    houseFlood: {
+        name: "House flood", // Fixture name to appear in interface
+        colour: {
+            // id: ["Name which appears to screen readers", "Data sent to server", "Hex value for button colour"]
+            red: ["Red", "red", "FF0000"],
+            orange: ["Orange", "orange", "FCAE05"],
+        },
+        position: {
+            // id: ["Button Text", "Data sent to server"]
+            up: ["Up", "up"],
+            down: ["Down", "down"],
+        },
+        effect: {
+            // id: ["Button Text", "Data sent to server"]
+            none: ["None", "none"],
+            strobeFast: ["Strobe Fast", "Strobe Fast"],
+            strobeSlow: ["Strobe Slow", "Strobe Slow"],
+            scan: ["Scan", "Scan"],
+        },
+        // ID of default for each attribute
+        active: {
+            colour: "",
+            position: "",
+            effect: "none"
+        }
+    },
+
+   // Fixture ID
+   houseFlood: {
+       name: "House flood", // Fixture name to appear in interface
+       colour: {
+           // id: ["Name which appears to screen readers", "Data sent to server", "Hex value for button colour"]
+           red: ["Red", "red", "FF0000"],
+           orange: ["Orange", "orange", "FCAE05"],
+       },
+       position: {
+           // id: ["Button Text", "Data sent to server"]
+           up: ["Up", "up"],
+           down: ["Down", "down"],
+       },
+       effect: {
+           // id: ["Button Text", "Data sent to server"]
+           none: ["None", "none"],
+           strobeFast: ["Strobe Fast", "Strobe Fast"],
+           strobeSlow: ["Strobe Slow", "Strobe Slow"],
+           scan: ["Scan", "Scan"],
+       },
+       // ID of default for each attribute
+       active: {
+           colour: "",
+           position: "",
+           effect: "none"
+       }
+   }
+};
