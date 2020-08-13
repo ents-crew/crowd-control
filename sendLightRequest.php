@@ -21,13 +21,13 @@ if (checkQueue() === 0) {
     $channel = $connection->channel();
 
     // pick the queue
-    $channel->queue_declare('incoming', false, false, false, false);
+    $channel->queue_declare($config["rabbitQueueName"], $config["rabbitQueuePassive"], $config["rabbitQueueDurable"], $config["rabbitQueueExclusive"], $config["rabbitQueueAutoDelete"]);
 
     // prepare the message
     $msg = new AMQPMessage($_POST["fixture"] . "." . $_POST["attribute"] . "." . $_POST["action"]);
 
     // send!
-    $channel->basic_publish($msg, 'incoming', 'command');
+    $channel->basic_publish($msg, $config["rabbitExchange"], $config["rabbitRoutingKey"]);
 } else { // if it's not the player's turn, respond and say Unauthorised
     http_response_code(401);
 }

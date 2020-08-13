@@ -6,6 +6,15 @@ return array(
     "rabbitUser" => "",
     "rabbitPassword" => "",
 
+    // RabbitMQ destination details
+    "rabbitQueueName" => "",
+    "rabbitQueuePassive" => "false",
+    "rabbitQueueDurable" => "false",
+    "rabbitQueueExclusive" => "false",
+    "rabbitQueueAutoDelete" => "false",
+    "rabbitExchange" => "",
+    "rabbitRoutingKey" => "",
+
     // File name for queue SQLite database
     "queueSQLite" => "queue.db",
 
