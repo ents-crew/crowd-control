@@ -77,101 +77,29 @@
 
 <div class="container">
   <h2 class="fixtures-title">Light groups</h2>
-  <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons">
-    <label class="btn radio-button active">
-      <input checked id="group-house-flood" name="groups" type="radio">
-      House flood</label>
-    <label class="btn radio-button">
-      <input id="group-house-rear" name="groups" type="radio">
-      House rear</label>
-    <label class="btn radio-button">
-      <input id="group-house-front" name="groups" type="radio">
-      House front</label>
-    <label class="btn radio-button">
-      <input id="group-crowd-scanner" name="groups" type="radio">
-      Crowd scanner</label>
-    <label class="btn radio-button">
-      <input id="group-stage-front" name="groups" type="radio">
-      Stage front</label>
-    <label class="btn radio-button">
-      <input id="group-stage-back" name="groups" type="radio">
-      Stage back</label>
-    <label class="btn radio-button">
-      <input id="group-back-curtain" name="groups" type="radio">
-      Back curtain</label>
-    <label class="btn radio-button">
-      <input id="group-dj-lights" name="groups" type="radio">
-      DJ lights</label>
+  <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons" id="fixtures-carousel">
+
   </div>
 </div>
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-4 colours btn-group-toggle" data-toggle="buttons">
+    <div class="col-md-4">
       <h3>Colour</h3>
-      <label class="btn radio-button colour-red">
-        <input id="colour-red" name="colours" type="radio">
-        Red</label>
-      <label class="btn radio-button colour-orange active">
-        <input checked id="colour-orange" name="colours" type="radio">
-        Orange</label>
-      <label class="btn radio-button colour-yellow">
-        <input id="colour-yellow" name="colours" type="radio">
-        Yellow</label>
-      <label class="btn radio-button colour-light-green">
-        <input id="colour-light-green" name="colours" type="radio">
-        Light green</label>
-      <label class="btn radio-button colour-dark-green">
-        <input id="colour-dark-green" name="colours" type="radio">
-        Dark green</label>
-      <label class="btn radio-button colour-light-blue">
-        <input id="colour-light-blue" name="colours" type="radio">
-        Light blue</label>
-      <label class="btn radio-button colour-dark-blue">
-        <input id="colour-dark-blue" name="colours" type="radio">
-        Dark blue</label>
-      <label class="btn radio-button colour-purple">
-        <input id="colour-purple" name="colours" type="radio">
-        Purple</label>
+      <div class="colours btn-group-toggle" data-toggle="buttons" id="colour">
+        <p>Choose a group of lights above to see available controls...</p>
+      </div>
     </div>
     <div class="col-md-3">
       <h3>Position</h3>
-      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons">
-        <label class="btn radio-button active">
-          <input checked id="position-up" name="positions" type="radio">
-          Up</label>
-        <label class="btn radio-button">
-          <input id="position-down" name="positions" type="radio">
-          Down</label>
-        <label class="btn radio-button">
-          <input id="position-cross" name="positions" type="radio">
-          Cross</label>
-        <label class="btn radio-button">
-          <input id="position-forwards" name="positions" type="radio">
-          Forward</label>
-        <label class="btn radio-button">
-          <input id="position-back" name="positions" type="radio">
-          Back</label>
+      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons" id="position">
+        <p>Choose a group of lights above to see available controls...</p>
       </div>
     </div>
     <div class="col-md-3">
       <h3>Effect</h3>
-      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons">
-        <label class="btn radio-button active">
-          <input checked id="effect-none" name="effects" type="radio">
-          None</label>
-        <label class="btn radio-button">
-          <input id="effect-strobe-slow" name="effects" type="radio">
-          Strobe Slow</label>
-        <label class="btn radio-button active">
-          <input id="effect-strobe-fast" name="effects" type="radio">
-          Strobe Fast</label>
-        <label class="btn radio-button">
-          <input id="effect-scan" name="effects" type="radio">
-          Scan</label>
-        <label class="btn radio-button">
-          <input id="effect-spin" name="effects" type="radio">
-          Spin</label>
+      <div class="stacked-buttons btn-group-toggle" data-toggle="buttons" id="effect">
+        <p>Choose a group of lights above to see available controls...</p>
       </div>
     </div>
   </div>
@@ -179,6 +107,7 @@
 <!-- partial -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+<script src="resources/fixtures.js"></script>
 <script src="resources/script.js"></script>
 
 </body>
