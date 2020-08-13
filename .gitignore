@@ -1,4 +1,4 @@
 vendor
 config.php
-queue
+queue.db
 .idea

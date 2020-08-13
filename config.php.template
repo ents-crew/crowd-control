@@ -7,7 +7,7 @@ return array(
     "rabbitPassword" => "",
 
     // File name for queue SQLite database
-    "queueSQLite" => "",
+    "queueSQLite" => "queue.db",
 
     // Duration of time someone has in live mode, in seconds
     "liveDuration" => ""
