@@ -13,20 +13,26 @@ function checkQueuePosition() {
         } else if (position === 0) { // if the person is first
             // if they were not already live
             if (!isLive) {
+                // mark them as now live
                 isLive = true;
                 // alert user that they're live
                 $("#live-modal").modal();
                 // update status bar
                 $("#status").html(
                     '<strong class="live">Live mode</strong> Your controls are currently affecting what you see on the live stream!')
+                // send the user's control choices to the server - this way, their edits in rehearsal mode appear immediately
+                postAllControls();
             }
         } else if (position === 1) { //  if the person is next
+            // remember they're not live
             isLive = false;
             // update status bar
             $("#status").html(
                 "<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
                 "practise. You're <strong>next</strong> in the queue.");
         } else if (position === -1) { // if the person's turn has just ended
+            // remember they're not live
+            isLive = false;
             // Stop checking queue position
             clearInterval(queueChecker);
             // Clear status bar
@@ -34,12 +40,30 @@ function checkQueuePosition() {
             // Alert the user
             $("#end-modal").modal();
         } else { // if the person is anywhere else in the queue
+            // remember they're not live
             isLive = false;
             // update status bar
             $("#status").html(
                 "<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
                 "practise. You're number " + position + " in the queue.");
         }
+    })
+}
+
+// Function to iterate through all fixtures and send their active state to the server
+function postAllControls() {
+    // for each fixture
+    fixtureKeys.forEach(function (fixture) {
+        // for each attribute
+        Object.keys(fixtures[fixture]["active"]).forEach(function (attribute) {
+            // POST its current value to the server
+            $.post("sendLightRequest.php",
+                {
+                    fixture: fixture,
+                    attribute: attribute,
+                    action: fixtures[fixture]["active"][attribute]
+                })
+        })
     })
 }
 

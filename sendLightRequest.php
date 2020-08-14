@@ -3,7 +3,6 @@
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-session_start();
 require "checkQueue.php";
 require_once __DIR__ . '/vendor/autoload.php';
 
