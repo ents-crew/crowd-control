@@ -39,8 +39,8 @@ function checkQueue() {
                 // Prepare statement to add an expiration time to the person at the front of the queue
                 // Time defined in config file
                 $addExpiration = $db->prepare("UPDATE queue SET eject = (strftime('%s','now') + ?) WHERE id = ?;");
-                $addExpiration->bindParam(1, $sessionID);
-                $addExpiration->bindParam(2, $config["liveDuration"]);
+                $addExpiration->bindParam(1, $config["liveDuration"]);
+                $addExpiration->bindParam(2, $sessionID);
 
                 // Add the expiration
                 if ($addExpiration->execute()) { // if it was successfully added
