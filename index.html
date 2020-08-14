@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <title>Crowd Control - Ents Crew</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
+  <link crossorigin="anonymous"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg=="
+        rel="stylesheet"/>
   <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&amp;family=Montserrat&amp;display=swap'
         rel='stylesheet'>
   <link href="resources/style.css" rel="stylesheet">
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
+
 <!-- Intro modal -->
 <div aria-hidden="true" class="modal fade" data-backdrop="static" data-keyboard="false" id="intro-modal" tabindex="-1">
   <div class="modal-dialog">
@@ -37,6 +40,7 @@
   </div>
 </div>
 
+<!-- Status bar -->
 <div class="status">
   <div class="container status-content">
     <strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can
@@ -45,6 +49,7 @@
   </div>
 </div>
 
+<!-- Header -->
 <div class="container">
   <header>
     <div class="logo mr-3">
@@ -62,26 +67,30 @@
   <hr>
 </div>
 
+<!-- Live views section -->
 <div class="container-fluid mt-4 live-views">
   <div class="row">
     <div class="col-md-6">
       <div class="embed-responsive embed-responsive-16by9">
+        <!-- Embedded venue live stream -->
         <iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen class="embed-responsive-item"
                 src="https://www.youtube-nocookie.com/embed/vPGUZvtQfA0"></iframe>
       </div>
     </div>
     <div class="col-md-6">
+      <!-- Interactive venue map to choose fixtures -->
     </div>
   </div>
 </div>
 
+<!-- Light groups carousel - populated by Javascript -->
 <div class="container">
   <h2 class="fixtures-title">Light groups</h2>
   <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons" id="fixtures-carousel">
-
   </div>
 </div>
 
+<!-- Fixture controls - populated by Javascript once a fixture is chosen from the carousel -->
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10">
@@ -112,9 +121,15 @@
     </div>
   </div>
 </div>
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+<script crossorigin="anonymous"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="resources/queue.js"></script>
 <script src="resources/fixtures.js"></script>
 <script src="resources/controls.js"></script>
 
