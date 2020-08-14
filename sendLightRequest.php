@@ -23,6 +23,8 @@ if (checkQueue() === 0) {
     // pick the queue
     $channel->queue_declare($config["rabbitQueueName"], $config["rabbitQueuePassive"], $config["rabbitQueueDurable"], $config["rabbitQueueExclusive"], $config["rabbitQueueAutoDelete"]);
 
+    error_log($_POST["fixture"] . "." . $_POST["attribute"] . "." . $_POST["action"]);
+
     // prepare the message
     $msg = new AMQPMessage($_POST["fixture"] . "." . $_POST["attribute"] . "." . $_POST["action"]);
 

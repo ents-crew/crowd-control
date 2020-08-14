@@ -6,7 +6,7 @@ function getActiveFixture() {
     return $("input:checked[data-controls='fixtures']").data("interactiveid");
 }
 
-// Add a colour to the colour button section, based on the keys
+// Add a colour to the colour button section
 function addColourButtons() {
     var activeFixture = getActiveFixture();
 
@@ -32,6 +32,15 @@ function addColourButtons() {
             '          Red</label>'
         )
     });
+}
+
+// Add the intensity fader for the current light
+function addIntensityFader() {
+    var maxIntensity = fixtures[getActiveFixture()].maxIntensity;
+    var currentIntensity = fixtures[getActiveFixture()].active.intensity;
+
+    $("#intensity").append(
+        '<input type="range" id="intensityFader" name="intensity" min="0" max="' + maxIntensity + '" value="' + currentIntensity + '" data-controls="intensity">')
 }
 
 // Add a colour to the colour button section, based on the keys
@@ -84,13 +93,15 @@ $(document).ready(function () {
         $("#colour").empty();
         $("#position").empty();
         $("#effect").empty();
+        $("#intensity").empty();
 
         // Generate new controls
         addColourButtons();
+        addIntensityFader();
         addButtons("position");
         addButtons("effect");
 
-        // Create a listener for when a control is pressed
+        // Create a listener for when a control button is pressed
         $(".control-button").on("change", function () {
             // Update the currently active attribute in the fixtures object
             fixtures[getActiveFixture()]["active"][$(this).data("controls")] = $(this).data("interactiveid");
@@ -101,6 +112,20 @@ $(document).ready(function () {
                     fixture: getActiveFixture(),
                     attribute: $(this).data("controls"),
                     action: fixtures[getActiveFixture()][$(this).data("controls")][$(this).data("interactiveid")][1]
+                })
+        });
+
+        // Create a listener for when intensity is changed
+        $("#intensityFader").on("change", function () {
+            // Update the currently active attribute in the fixtures object
+            fixtures[getActiveFixture()]["active"]["intensity"] = $(this).val();
+
+            // POST the information to the request handler
+            $.post("sendLightRequest.php",
+                {
+                    fixture: getActiveFixture(),
+                    attribute: "intensity",
+                    action: $(this).val()
                 })
         });
     });

@@ -3,6 +3,7 @@ var fixtures = {
     // Fixture ID - sent to RabbitMQ
     houseFlood: {
         name: "House flood", // Fixture name to appear in interface
+        maxIntensity: 255, // maximum intensity value, probably either 100 or 255
         colour: {
             // id: ["Name which appears to screen readers", "Data sent to RabbitMQ", "Hex value for button colour"]
             red: ["Red", "red", "FF0000"],
@@ -16,12 +17,13 @@ var fixtures = {
         effect: {
             // id: ["Button Text", "Data sent to RabbitMQ"]
             none: ["None", "none"],
-            strobeFast: ["Strobe Fast", "Strobe Fast"],
-            strobeSlow: ["Strobe Slow", "Strobe Slow"],
-            scan: ["Scan", "Scan"],
+            strobeFast: ["Strobe Fast", "strobeFast"],
+            strobeSlow: ["Strobe Slow", "strobeSlow"],
+            scan: ["Scan", "scan"],
         },
         // ID of default for each attribute
         active: {
+            intensity: "",
             colour: "",
             position: "",
             effect: "none"
@@ -31,6 +33,7 @@ var fixtures = {
    // Fixture ID - sent to RabbitMQ
    houseFlood: {
        name: "House flood", // Fixture name to appear in interface
+       maxIntensity: 255, // maximum intensity value, probably either 100 or 255
        colour: {
            // id: ["Name which appears to screen readers", "Data sent to RabbitMQ", "Hex value for button colour"]
            red: ["Red", "red", "FF0000"],
@@ -44,12 +47,13 @@ var fixtures = {
        effect: {
            // id: ["Button Text", "Data sent to RabbitMQ"]
            none: ["None", "none"],
-           strobeFast: ["Strobe Fast", "Strobe Fast"],
-           strobeSlow: ["Strobe Slow", "Strobe Slow"],
-           scan: ["Scan", "Scan"],
+           strobeFast: ["Strobe Fast", "strobeFast"],
+           strobeSlow: ["Strobe Slow", "strobeSlow"],
+           scan: ["Scan", "scan"],
        },
        // ID of default for each attribute
        active: {
+           intensity: "",
            colour: "",
            position: "",
            effect: "none"
