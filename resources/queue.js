@@ -9,7 +9,7 @@ function checkQueuePosition() {
 
         // if the queue info is invalid
         if (isNaN(position)) {
-            $("#status").text("Waiting for queue information... problem");
+            $("#status").text("Problem getting queue information - trying again...");
         } else if (position === 0) { // if the person is first
             // if they were not already live
             if (!isLive) {
