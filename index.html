@@ -24,7 +24,7 @@
           <div class="logo-ents">Ents</div>
           <div class="logo-crew">Crew</div>
         </div>
-        <h3 class="modal-title" id="staticBackdropLabel">Welcome to Crowd Control.</h3>
+        <h3 class="modal-title">Welcome to Crowd Control.</h3>
       </div>
       <div class="modal-body">
         <p>Crowd Control lets you take control of a 3D rendering of St Andrews' only nightclub, Club 601. We're live on
@@ -34,7 +34,49 @@
           can start making your designs. The bar at the bottom of the screen will let you know what mode you're in.</p>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-dismiss="modal" id="joinQueue" type="button">Join the queue</button>
+        <button class="btn btn-primary join-queue" data-dismiss="modal" type="button">Join the queue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Live mode intro -->
+<div aria-hidden="true" class="modal fade" id="live-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><span class="live">Live mode</span> activated.</h3>
+      </div>
+      <div class="modal-body">
+        <p>Your controls are live. Watch your designs appear in the stream!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" type="button">Okay!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Time up -->
+<div aria-hidden="true" class="modal fade" data-backdrop="static" data-keyboard="false" id="end-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="logo mr-3">
+          <div class="logo-ents">Ents</div>
+          <div class="logo-crew">Crew</div>
+        </div>
+        <h3 class="modal-title">Time's up!</h3>
+      </div>
+      <div class="modal-body">
+        <p>Someone else has taken over the controls now. We hope you had fun!</p>
+        <p>Fancy doing this more?</p>
+        <p>Ents Crew power events in the Union. Join us and we'll give you all the training you need for lighting,
+          sound, or projections - and there's no joining fee!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary join-queue" data-dismiss="modal" type="button">Re-join the queue</button>
+        <a class="btn btn-primary" href="https://entscrew.net">Join Ents Crew</a>
       </div>
     </div>
   </div>

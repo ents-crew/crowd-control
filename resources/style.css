@@ -34,6 +34,10 @@ hr {
     border: 0;
 }
 
+.modal-header {
+    justify-content: left;
+}
+
 /* Status bar */
 .status {
     background-color: #232628;
