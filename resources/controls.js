@@ -73,9 +73,6 @@ function addButtons(type) {
 
 // Prepare the page!
 $(document).ready(function () {
-    // Show intro modal
-    // $('#intro-modal').modal();
-
     // Generate the buttons for all the fixtures
     fixtureKeys.forEach(function (item) {
         // Append to the carousel
