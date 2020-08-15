@@ -17,12 +17,12 @@ function checkQueuePosition() {
                 isLive = true;
                 // alert user that they're live
                 $("#live-modal").modal();
-                // update status bar
-                $("#status").html(
-                    '<strong class="live">Live mode</strong> Your controls are currently affecting what you see on the live stream!')
                 // send the user's control choices to the server - this way, their edits in rehearsal mode appear immediately
                 postAllControls();
             }
+            // update status bar
+            $("#status").html(
+                '<strong class="live">Live mode</strong> Your controls are currently affecting what you see on the live stream!')
         } else if (position === 1) { //  if the person is next
             // remember they're not live
             isLive = false;
@@ -39,6 +39,20 @@ function checkQueuePosition() {
             $("#status").text("Waiting for queue information...");
             // Alert the user
             $("#end-modal").modal();
+        } else if (position === -2) { //  if the person's turn will expire soon
+            // remember they're live
+            isLive = true;
+            // update status bar
+            $("#status").html(
+                "<strong class='live'>Live mode</strong> Your session is almost up - time for some final tweaks!");
+            $("#status").effect("shake");
+        } else if (position === -3) { //  if the person's hasn't made any changes recently
+            // remember they're live
+            isLive = true;
+            // update status bar
+            $("#status").html(
+                "<strong class='live' id='live-status'>Live mode</strong> Keep making changes, or your session will be cut short!");
+            $("#status").effect("shake");
         } else { // if the person is anywhere else in the queue
             // remember they're not live
             isLive = false;

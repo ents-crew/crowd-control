@@ -6,8 +6,10 @@ use PhpAmqpLib\Message\AMQPMessage;
 require "checkQueue.php";
 require_once __DIR__ . '/vendor/autoload.php';
 
-// If the player's queue position is 0, it's their turn, so proceed with request
-if (checkQueue() === 0) {
+$queuePosition = checkQueue();
+
+// If it's their turn, so proceed with request
+if ($queuePosition === 0 || $queuePosition === -2 | $queuePosition === -3) {
     $config = require 'config.php';
 
     // connect to database

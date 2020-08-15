@@ -1,6 +1,8 @@
 <?php
 // A request to this page will return an integer response:
 /// -1000 - something has gone wrong, error has been logged.
+/// -3 - your turn will expire soon due to inactivity - send a command to extend the session.
+/// -2 - your turn will expire soon.
 /// -1 - your turn has expired.
 /// 0 - it's your turn.
 /// 1 or greater - your position in the queue, where 0 is your turn.
@@ -78,8 +80,21 @@ function checkQueue() {
                 // mark in the session that the person is at the front of the queue
                 $_SESSION["atFront"] = true;
 
-                // Send 0 back to the client so it updates to/stays in live mode
-                return 0;
+                // Get the ejection time and the time a command was last received
+                $getTimes = $db->prepare("SELECT eject, command_received FROM queue WHERE id = ?");
+                $getTimes->bindParam(1, $sessionID);
+                $times = $getTimes->execute()->fetchArray();
+
+                // if the person's session will expire soon
+                if (time() >= ($times["eject"] - $config["expiryWarning"])) {
+                    return -2;
+                } else if (!empty($times["command_received"]) && time() >= ($times["command_received"] + $config["inactivityWarning"])) {
+                    // If no command was received within the warning time period
+                    return -3;
+                } else {
+                    // Send 0 back to the client so it updates to/stays in live mode
+                    return 0;
+                }
             }
 
         } else { // if person is not at the front of the queue
