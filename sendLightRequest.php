@@ -10,6 +10,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 if (checkQueue() === 0) {
     $config = require 'config.php';
 
+    // connect to database
+    $db = new SQLite3($config["queueSQLite"]);
+
+    // note the session ID
+    $sessionID = session_id();
+
+    // Record in the database the time of this request
+    $noteHeartbeat = $db->prepare("UPDATE queue SET command_received = strftime('%s','now') WHERE id = ?");
+    $noteHeartbeat->bindParam(1, $sessionID);
+    if (!($noteHeartbeat->execute())) {
+        error_log("Failed to record command heartbeat to the database for user " . $sessionID . ". Error: " . $db->lastErrorMsg());
+    }
+
     // Iterate through the passed data and remove anything obviously malicious
     foreach ($_POST as $item) {
         $item = clearUpInput($item);
