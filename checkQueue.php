@@ -15,14 +15,21 @@ echo checkQueue();
 function checkQueue() {
     $config = require 'config.php';
 
+    // note the session ID
+    $sessionID = session_id();
+
     // connect to database
     $db = new SQLite3($config["queueSQLite"]);
 
-    // delete any expired players
-    $db->exec("DELETE FROM queue WHERE eject < strftime('%s','now');");
+    // Record in the database the time of this request
+    $noteHeartbeat = $db->prepare("UPDATE queue SET heartbeat_received = strftime('%s','now') WHERE id = ?");
+    $noteHeartbeat->bindParam(1, $sessionID);
+    if (!($noteHeartbeat->execute())) {
+        error_log("Failed to record heartbeat to the database for user " . $sessionID . ". Error: " . $db->lastErrorMsg());
+    }
 
-    // note the session ID
-    $sessionID = session_id();
+    // delete anybody whose time at the front of the queue is up, or who hasn't sent a heartbeat in the last 30 seconds
+    $db->exec("DELETE FROM queue WHERE eject < strftime('%s','now') OR (heartbeat_received IS NOT NULL AND heartbeat_received < (strftime('%s','now') - 30));");
 
     // If person is in queue
     if (!empty($_SESSION["inQueue"])) {
