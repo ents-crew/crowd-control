@@ -27,8 +27,15 @@ function checkQueue() {
         error_log("Failed to record heartbeat to the database for user " . $sessionID . ". Error: " . $db->lastErrorMsg());
     }
 
-    // delete anybody whose time at the front of the queue is up, or who hasn't sent a heartbeat in the last 30 seconds
-    $db->exec("DELETE FROM queue WHERE eject < strftime('%s','now') OR (heartbeat_received < (strftime('%s','now') - 30));");
+    // delete anybody whose time at the front of the queue is up, or who hasn't sent a heartbeat in the last 30 seconds,
+    // or who has sent a command ever but not within the inactivity time period
+    $deleteExpired = $db->prepare("DELETE FROM queue WHERE eject < strftime('%s','now') OR 
+                                                heartbeat_received < (strftime('%s','now') - 30) OR
+                                                (command_received IS NOT NULL AND command_received < (strftime('%s','now') - ?));");
+    $deleteExpired->bindParam(1, $config["inactivityTermination"]);
+    if (!($deleteExpired->execute())) {
+        error_log("Failed to delete expired users from the databse. Error: " . $db->lastErrorMsg());
+    }
 
     // If person is in queue
     if (!empty($_SESSION["inQueue"])) {

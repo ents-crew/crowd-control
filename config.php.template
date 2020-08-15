@@ -19,5 +19,10 @@ return array(
     "queueSQLite" => "queue.db",
 
     // Duration of time someone has in live mode, in seconds
-    "liveDuration" => ""
+    "liveDuration" => 120,
+
+    // After how many seconds of receiving no commands should the user be warned that their session will be ended
+    "inactivityWarning" => 40,
+    // After how many seconds of receiving no commands should the person's time in live mode be ended
+    "inactivityTermination" => 60
 );
