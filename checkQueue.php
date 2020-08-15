@@ -29,12 +29,21 @@ function checkQueue() {
     }
 
     // delete anybody whose time at the front of the queue is up, or who hasn't sent a heartbeat in the last 30 seconds
-    $db->exec("DELETE FROM queue WHERE eject < strftime('%s','now') OR (heartbeat_received IS NOT NULL AND heartbeat_received < (strftime('%s','now') - 30));");
+    $db->exec("DELETE FROM queue WHERE eject < strftime('%s','now') OR (heartbeat_received < (strftime('%s','now') - 30));");
 
     // If person is in queue
     if (!empty($_SESSION["inQueue"])) {
         // Get the ID of the person with the lowest position in the queue, which will be the person who has been there longest
-        $minID = $db->query("SELECT id FROM queue ORDER BY `position` ASC LIMIT 1")->fetchArray()[0];
+        $minID = $db->query("SELECT id FROM queue ORDER BY `position` ASC LIMIT 1")->fetchArray();
+
+        // If there are results
+        if (is_array($minID)) {
+            // Set minID to the ID of the person first in line
+            $minID = $minID[0];
+        } else {
+            // Null the ID, since the queue is empty
+            $minID = null;
+        }
 
         // if the ID of the person who's first in the queue is the same as the ID of the requester, let them in!
         if ($minID === $sessionID) {
@@ -83,7 +92,7 @@ function checkQueue() {
         }
     } else { // If person is not yet in the queue
         // Prepare statement to add them to queue
-        $addToQueue = $db->prepare("INSERT INTO queue (id) VALUES (?);");
+        $addToQueue = $db->prepare("INSERT INTO queue (id, heartbeat_received) VALUES (?, strftime('%s','now'));");
         $addToQueue->bindParam(1, $sessionID);
 
         // Add them to queue
