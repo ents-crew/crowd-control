@@ -4,8 +4,7 @@
 /// -1 - your turn has expired.
 /// 0 - it's your turn.
 /// 1 or greater - your position in the queue, where 0 is your turn.
-// On the server, you can require this script file and call the function checkQueue() to get the same result. Make sure
-// you've called session_start() at the top of the file first.
+// On the server, you can require this script file and call the function checkQueue() to get the same result.
 
 session_start();
 
