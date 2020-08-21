@@ -1,7 +1,7 @@
 # Crowd Control
 Crowd Control is a web-based lighting control panel. Users queue with the console in "rehearsal mode" where they can practice using the controls, then have a period of time where the controls are "live" and sending real lighting commands.
 
-The commands are sent to a RabbitMQ server, and can then be consumed by other software to control lights (either in the real world or a visualiser).
+The commands are sent to a RabbitMQ server, and can then be consumed by other software (such as [ents-crew/interactive-dmx-merger](https://github.com/ents-crew/interactive-dmx-merger)) to control lights (either in the real world or a visualiser).
 
 ## Installation
 You'll need a web server which can handle PHP, and `composer` to install dependencies.
