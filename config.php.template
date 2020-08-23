@@ -1,5 +1,9 @@
 <?php
 return array(
+    // Set to true to deactivate the system. People in the queue will continue to be there, but nobody new can join,
+    // nor can someone return to their queue space if they refresh the page.
+    "offline" => false,
+
     // RabbitMQ server details
     "rabbitHost" => "",
     "rabbitPort" => "",

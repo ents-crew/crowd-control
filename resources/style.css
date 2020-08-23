@@ -27,6 +27,10 @@ a:hover, a:active {
     text-decoration: none;
 }
 
+a.btn {
+    text-decoration: none;
+}
+
 small, small a {
     color: #C3CFD9 !important;
 }

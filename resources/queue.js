@@ -83,15 +83,25 @@ function postAllControls() {
 
 // Prepare the page!
 $(document).ready(function () {
-    // Show intro modal
-    $("#intro-modal").modal();
+    // Check if the system is offline
+    $.get("checkOffline.php", function (offline) {
+        // Convert status to a number
+        offline = Number(offline);
 
-    // when user clicks to join the queue
-    $(document).on("click", ".join-queue", function () {
-        // initial queue position check
-        checkQueuePosition();
-        // check queue position every 5 seconds
-        queueChecker = setInterval(checkQueuePosition, 5000)
+        if (offline === 0) {
+            // Show intro modal
+            $("#intro-modal").modal();
+
+            // when user clicks to join the queue
+            $(document).on("click", ".join-queue", function () {
+                // initial queue position check
+                checkQueuePosition();
+                // check queue position every 5 seconds
+                queueChecker = setInterval(checkQueuePosition, 5000)
+            });
+        } else {
+            $("#off-air-modal").modal();
+        }
     });
 });
 

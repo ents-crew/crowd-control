@@ -112,21 +112,24 @@ function checkQueue() {
             }
         }
     } else { // If person is not yet in the queue
-        // Prepare statement to add them to queue
-        $addToQueue = $db->prepare("INSERT INTO queue (id, heartbeat_received) VALUES (?, strftime('%s','now'));");
-        $addToQueue->bindParam(1, $sessionID);
+        // If the stream is online
+        if (!$config["offline"]) {
+            // Prepare statement to add them to queue
+            $addToQueue = $db->prepare("INSERT INTO queue (id, heartbeat_received) VALUES (?, strftime('%s','now'));");
+            $addToQueue->bindParam(1, $sessionID);
 
-        // Add them to queue
-        if ($addToQueue->execute()) { // if they were successfully added
-            // update session variable to reflect that they're in the queue
-            $_SESSION["inQueue"] = true;
-            // mark in the session that the person is not at the front of the queue
-            $_SESSION["atFront"] = false;
+            // Add them to queue
+            if ($addToQueue->execute()) { // if they were successfully added
+                // update session variable to reflect that they're in the queue
+                $_SESSION["inQueue"] = true;
+                // mark in the session that the person is not at the front of the queue
+                $_SESSION["atFront"] = false;
 
-            // return queue position to put/keep them in rehearsal mode
-            return getQueuePosition($db, $sessionID);
-        } else {
-            error_log("Failed to add user " . $sessionID . " to the queue. Error: " . $db->lastErrorMsg());
+                // return queue position to put/keep them in rehearsal mode
+                return getQueuePosition($db, $sessionID);
+            } else {
+                error_log("Failed to add user " . $sessionID . " to the queue. Error: " . $db->lastErrorMsg());
+            }
         }
     }
 
