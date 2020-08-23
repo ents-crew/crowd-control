@@ -36,7 +36,7 @@ function checkQueue() {
                                                 (command_received IS NOT NULL AND command_received < (strftime('%s','now') - ?));");
     $deleteExpired->bindParam(1, $config["inactivityTermination"]);
     if (!($deleteExpired->execute())) {
-        error_log("Failed to delete expired users from the databse. Error: " . $db->lastErrorMsg());
+        error_log("Failed to delete expired users from the database. Error: " . $db->lastErrorMsg());
     }
 
     // If person is in queue
