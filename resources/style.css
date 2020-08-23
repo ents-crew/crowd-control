@@ -17,6 +17,20 @@ h1, h2, h3, h4, h5 {
     margin-top: 15px;
 }
 
+a, a:visited {
+    color: #f8f9fa;
+    text-decoration: underline;
+}
+
+a:hover, a:active {
+    color: #e7e6e6;
+    text-decoration: none;
+}
+
+small, small a {
+    color: #C3CFD9 !important;
+}
+
 .container {
     margin-top: 2rem;
 }
