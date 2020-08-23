@@ -10,6 +10,9 @@
         rel="stylesheet"/>
   <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&amp;family=Montserrat&amp;display=swap'
         rel='stylesheet'>
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.2.1/simplebar.min.css"
+        integrity="sha512-uZTwaYYhJLFXaXYm1jdNiH6JZ1wLCTVnarJza7iZ1OKQmvi6prtk85NMvicoSobylP5K4FCdGEc4vk1AYT8b9Q=="
+        rel="stylesheet"/>
   <link href="resources/style.css" rel="stylesheet">
 
 </head>
@@ -113,7 +116,7 @@
 </div>
 
 <!-- Live views section -->
-<div class="container\ mt-4 live-views">
+<div class="container mt-4 live-views">
   <div class="embed-responsive embed-responsive-16by9">
     <!-- Embedded venue live stream -->
     <iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen class="embed-responsive-item"
@@ -124,7 +127,9 @@
 <!-- Light groups carousel - populated by Javascript -->
 <div class="container">
   <h2 class="fixtures-title">Light groups</h2>
-  <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons" id="fixtures-carousel">
+  <div data-simplebar data-simplebar-auto-hide="false">
+    <div class="fixtures-carousel btn-group-toggle" data-toggle="buttons" id="fixtures-carousel">
+    </div>
   </div>
 </div>
 
@@ -169,6 +174,9 @@
 <script crossorigin="anonymous"
         integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ=="
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha512-jBhCdCCdbZ8l7FrZg15L1dUTgcAfnR1HXBcvU4LBUp9/T17ktq3hRjzY1t9h6RNJRjzDQyo9fmoehfDR1kqApw=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.2.1/simplebar.min.js"></script>
 
 <script src="resources/queue.js"></script>
 <script src="resources/fixtures.js"></script>

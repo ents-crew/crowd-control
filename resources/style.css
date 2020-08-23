@@ -106,30 +106,21 @@ button.active, .radio-button.active {
     text-align: center;
     white-space: nowrap;
     width: 100%;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
 }
 
 .fixtures-carousel label {
     scroll-snap-align: start;
     padding: 50px 75px;
     margin: 0 10px;
-    position: relative;
-    overflow: hidden;
 }
 
-.fixtures-carousel::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+.simplebar-content-wrapper {
+    scroll-snap-type: x mandatory;
 }
 
-.fixtures-carousel::-webkit-scrollbar-thumb {
+.simplebar-scrollbar::before {
     background: #f8f9fa;
-    border-radius: 10px;
-}
-
-.fixtures-carousel::-webkit-scrollbar-track {
-    background: transparent;
 }
 
 /* Colour selector */
