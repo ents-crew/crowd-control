@@ -9,7 +9,7 @@ function checkQueuePosition() {
 
         // if the queue info is invalid
         if (isNaN(position)) {
-            $("#status").text("Problem getting queue information - trying again...");
+            updateStatusBar("Problem getting queue information - trying again...");
         } else if (position === 0) { // if the person is first
             // if they were not already live
             if (!isLive) {
@@ -20,45 +20,37 @@ function checkQueuePosition() {
                 // send the user's control choices to the server - this way, their edits in rehearsal mode appear immediately
                 postAllControls();
             }
-            // update status bar
-            $("#status").html(
-                '<strong class="live">Live mode</strong> Your controls are currently affecting what you see on the live stream!')
+            updateStatusBar('<strong class="live">Live mode</strong> Your controls are currently affecting what you see on the live stream!');
         } else if (position === 1) { //  if the person is next
             // remember they're not live
             isLive = false;
-            // update status bar
-            $("#status").html(
-                "<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
+            updateStatusBar("<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
                 "practise. You're <strong>next</strong> in the queue.");
         } else if (position === -1) { // if the person's turn has just ended
             // remember they're not live
             isLive = false;
             // Stop checking queue position
             clearInterval(queueChecker);
-            // Clear status bar
-            $("#status").text("Waiting for queue information...");
+
+            updateStatusBar("Waiting for queue information...");
+
             // Alert the user
             $("#end-modal").modal();
         } else if (position === -2) { //  if the person's turn will expire soon
             // remember they're live
             isLive = true;
-            // update status bar
-            $("#status").html(
-                "<strong class='live'>Live mode</strong> Your session is almost up - time for some final tweaks!");
-            $("#status").effect("shake");
+            updateStatusBar("<strong class='live'>Live mode</strong> Your session is almost up - time for some final tweaks!", true);
         } else if (position === -3) { //  if the person's hasn't made any changes recently
             // remember they're live
             isLive = true;
-            // update status bar
-            $("#status").html(
-                "<strong class='live' id='live-status'>Live mode</strong> Keep making changes, or your session will be cut short!");
-            $("#status").effect("shake");
+
+            updateStatusBar("<strong class='live' id='live-status'>Live mode</strong> Keep making changes, or your session will be cut short!", true);
+
         } else { // if the person is anywhere else in the queue
             // remember they're not live
             isLive = false;
-            // update status bar
-            $("#status").html(
-                "<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
+
+            updateStatusBar("<strong>Rehearsal mode</strong> - your controls aren't active so your designs won't appear live, but you can " +
                 "practise. You're number " + position + " in the queue.");
         }
     })
@@ -79,6 +71,27 @@ function postAllControls() {
                 })
         })
     })
+}
+
+// Function to update the status bar and shake it if necessary
+// message is a string of the new message, can contain HTML. shake should be true if the bar should shake.
+function updateStatusBar(message, shake) {
+    // If the status bar does not already contain the message
+    if ($("#status-detail").html() !== message) {
+        // update status bar
+        $("#status").html(message);
+
+        // update status bar which has the aria-live attribute and should be read to screenreaders.
+        // this is a separate area because shaking the main area triggers the status messsage to be re-read, which is
+        // likely confusing since it interrupts what you're doing every 5 seconds.
+        $("#status-screenreader").html(message);
+    }
+
+    // If the bar should shake
+    if (shake) {
+        // Shake the bar
+        $("#status").effect("shake");
+    }
 }
 
 // Prepare the page!
