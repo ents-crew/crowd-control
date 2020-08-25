@@ -29,7 +29,7 @@ function addColourButtons() {
         $("#colour").append(
             '<label class="btn radio-button ' + activeClass + '" style="background-color: #' + fixtures[activeFixture].colour[item][2] + '">\n' +
             '          <input name="colour" type="radio" class="control-button" data-controls="colour" data-interactiveid="' + item + '" ' + inputChecked + '>\n' +
-            '          Red</label>'
+            '          ' + fixtures[activeFixture]["colour"][item][0] + '</label>'
         )
     });
 }
@@ -40,7 +40,7 @@ function addIntensityFader() {
     var currentIntensity = fixtures[getActiveFixture()].active.intensity;
 
     $("#intensity").append(
-        '<input type="range" id="intensityFader" name="intensity" min="0" max="' + maxIntensity + '" value="' + currentIntensity + '" data-controls="intensity">')
+        '<input type="range" id="intensityFader" name="intensity" min="0" max="' + maxIntensity + '" value="' + currentIntensity + '" data-controls="intensity" aria-label="Intensity">')
 }
 
 // Add a colour to the colour button section, based on the keys
