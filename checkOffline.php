@@ -5,7 +5,7 @@
 $config = require 'config.php';
 
 if ($config["offline"]) {
-    return 1;
+    echo 1;
 } else {
-    return 0;
+    echo 0;
 }
