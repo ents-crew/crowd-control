@@ -1,19 +1,18 @@
 <?php
 
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Message\AMQPMessage;
-
 require "checkQueue.php";
 require_once __DIR__ . '/vendor/autoload.php';
 
 $queuePosition = checkQueue();
+
+echo $queuePosition;
 
 // If it's their turn, so proceed with request
 if ($queuePosition === 0 || $queuePosition === -2 | $queuePosition === -3) {
     $config = require 'config.php';
 
     // connect to database
-    $db = new SQLite3($config["queueSQLite"]);
+    $db = require 'db.php';
 
     // note the session ID
     $sessionID = session_id();
@@ -30,18 +29,14 @@ if ($queuePosition === 0 || $queuePosition === -2 | $queuePosition === -3) {
         $item = clearUpInput($item);
     }
 
-    // connect to RabbitMQ
-    $connection = new AMQPStreamConnection($config["rabbitHost"], $config["rabbitPort"], $config["rabbitUser"], $config["rabbitPassword"]);
-    $channel = $connection->channel();
+    // Add command to the database "queue"
+    $command = $_POST["fixture"] . "." . $_POST["attribute"] . "." . $_POST["action"];
+    $addCommand = $db->prepare("INSERT INTO commands (command) VALUES (?)");
+    $addCommand->bindParam(1, $command);
+    if (!($addCommand->execute())) {
+        error_log("Failed to add command to the database for user " . $sessionID . ". Error: " . $db->lastErrorMsg());
+    }
 
-    // pick the queue
-    $channel->queue_declare($config["rabbitQueueName"], $config["rabbitQueuePassive"], $config["rabbitQueueDurable"], $config["rabbitQueueExclusive"], $config["rabbitQueueAutoDelete"]);
-
-    // prepare the message
-    $msg = new AMQPMessage($_POST["fixture"] . "." . $_POST["attribute"] . "." . $_POST["action"]);
-
-    // send!
-    $channel->basic_publish($msg, $config["rabbitExchange"], $config["rabbitRoutingKey"]);
 } else { // if it's not the player's turn, respond and say Unauthorised
     http_response_code(401);
 }
