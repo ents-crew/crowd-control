@@ -20,7 +20,7 @@ function checkQueue() {
     $sessionID = session_id();
 
     // connect to database
-    $db = new SQLite3($config["queueSQLite"]);
+    $db = require 'db.php';
 
     // Record in the database the time of this request
     $noteHeartbeat = $db->prepare("UPDATE queue SET heartbeat_received = strftime('%s','now') WHERE id = ?");
